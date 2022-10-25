@@ -1,1 +1,1 @@
-A devops learnings
+Shell learning

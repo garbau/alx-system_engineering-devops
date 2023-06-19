@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# The name of the custom HTTP header must be X-Served-By
+
+string_for_replacement="server_name _;\n\tadd_header X-Served-By \$hostname;\n\trewrite ^\/redirect_me https:\/\/github.com\/besthor permanent;"
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default

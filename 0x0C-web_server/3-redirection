@@ -7,6 +7,9 @@ sudo ufw allow 'Nginx HTTP'
 
 echo "Hello World!" | sudo tee /var/www/html/index.html
 
-sudo sed -i '/server_name _/a location /redirect_me { rewrite ^ https://www.github.com/besthor permanent; }' /etc/nginx/sites-enabled/default
+#sudo sed -i '/server_name _/a location /redirect_me { rewrite ^ https://www.github.com/besthor permanent; }' /etc/nginx/sites-enabled/default
+
+new_string="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.github.com/besthor permanent;"
+sudo sed -i "s/server_name _;/$new_string/" /etc/nginx/sites-enabled/defaul/
 
 sudo service nginx restart
